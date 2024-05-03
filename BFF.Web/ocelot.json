@@ -1,0 +1,82 @@
+{
+  "Routes": [
+    {
+      //---Book Service: Debut ----------//
+      "DownstreamPathTemplate": "/api/books",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5210
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/books",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/books/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/books/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5210
+        }
+      ],
+
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      }
+      //---Book Service: Fin ----------//
+    },
+
+    {
+      //---Student Service: Debut ----------//
+      "DownstreamPathTemplate": "/api/students",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5255
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/students",
+      "UpstreamHttpMethod": [ "Get" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/students/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/students/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5255
+        }
+      ],
+
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      }
+      //---Student Service: Fin ----------//
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5053"
+  }
+}
