@@ -6,5 +6,5 @@
 #Post API
 ![AddBook-API](https://github.com/HeritierMav-2023/CleanArchitectureWithMicroservice/assets/148790419/6e40af58-4c1b-42a7-a70b-5555afa199e6)
 ![AddBook-API-success](https://github.com/HeritierMav-2023/CleanArchitectureWithMicroservice/assets/148790419/acbcee75-1c5c-4eb5-a340-9f457226e635)
-![bug_001-student-list](https://github.com/HeritierMav-2023/CleanArchitectureWithMicroservice/assets/148790419/a8e31868-50ca-46b0-a948-20f31610671c)
+
 ![Created-Student-API](https://github.com/HeritierMav-2023/CleanArchitectureWithMicroservice/assets/148790419/fa89800a-7077-4af8-8751-6447ce5ebf50)
