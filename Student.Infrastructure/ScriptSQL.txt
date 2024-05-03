@@ -1,0 +1,60 @@
+﻿-- ================================================
+-- Project : CleanArchitectureWithMicroservice
+-- ================================================
+
+-- =============================================
+-- Author:		Heritier Mavinga
+-- Create date: 20240501
+-- Description:	Stored procedure for managing CRUD students
+-- =============================================
+CREATE PROCEDURE [GetStudentDetails]
+	-- Add the parameters for the stored procedure here
+	@ID INT = NULL,
+	@Name NVARCHAR(50) = NULL,
+	@Gender NVARCHAR(8) = NULL, 
+	@Addresse NVARCHAR(50) = NULL,
+	@ContactNo NVARCHAR(15) = NULL,
+	@Faculty NVARCHAR(20) = NULL,
+	@DateAdded DATE = NULL,
+	@DateUpdated DATE = NULL,
+	@Action NVARCHAR(10)
+AS
+BEGIN
+	-- GetAll Students
+	IF @Action = 'GetAll'
+	BEGIN
+		SELECT * FROM [dbo].[Students]
+	END
+
+	-- Get by Id  Students
+	IF @Action = 'GetData'
+	BEGIN
+		SELECT * FROM [dbo].[Students] WHERE [Id]= @ID
+	END
+
+	-- Create Students
+	IF @Action = 'Post'
+	BEGIN
+		INSERT INTO [dbo].[Students] VALUES (@ID,@Name, @Gender, @Addresse, @ContactNo, @Faculty,@DateAdded,@DateUpdated)
+	END
+
+	-- Update Students
+	IF @Action = 'Put'
+	BEGIN
+		UPDATE [dbo].[Students] 
+		SET [Name] = @Name,
+			[Gender]  = @Gender, 
+			[Adresse] = @Addresse, 
+			[ContactNo] = @ContactNo, 
+			[Faculty]= @Faculty, 
+			AddedOn=@DateAdded, 
+			ModifiedOn=@DateUpdated 
+			WHERE [Id]= @ID
+	END
+	-- Delete Students
+	IF @Action = 'Delete'
+	BEGIN
+		DELETE FROM Students WHERE [Id] = @ID
+	END
+END
+GO
